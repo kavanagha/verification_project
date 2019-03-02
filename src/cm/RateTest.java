@@ -1098,7 +1098,7 @@ public class RateTest
         Period np2 = new Period(17,19);
         normalPeriods.add(np2);
 
-        CarParkKind park = CarParkKind.STAFF;
+        CarParkKind park = CarParkKind.MANAGEMENT;
 
         Rate rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
         Period hours = new Period(10,12);
@@ -1127,7 +1127,7 @@ public class RateTest
         Period np2 = new Period(17,19);
         normalPeriods.add(np2);
 
-        CarParkKind park = CarParkKind.STAFF;
+        CarParkKind park = CarParkKind.MANAGEMENT;
 
         Rate rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
         Period hours = new Period(5,15);
@@ -1138,6 +1138,306 @@ public class RateTest
         assertEquals(result,expected);
     }
 
+    /// TASK 3 ////
     
+    //TEST VISITOR MORE THAN 8 HOURS
+    @Test
+    public void testCase44()
+    {
+    	BigDecimal reducedRate = new BigDecimal("1");
+        BigDecimal normalRate = new BigDecimal("4");
+
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+        Period rp = new Period(2,6);
+        reducedPeriods.add(rp);
+        Period rp2 = new Period(14,16);
+        reducedPeriods.add(rp2);
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        Period np = new Period(7,12);
+        normalPeriods.add(np);
+        Period np2 = new Period(17,19);
+        normalPeriods.add(np2);
+
+        CarParkKind park = CarParkKind.VISITOR;
+
+        Rate rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
+        Period hours = new Period(7,19);
+        BigDecimal result = rate.calculate(hours);
+
+        BigDecimal expected = new BigDecimal("4.5");
+        
+        assertEquals(result,expected);
+    }
+    
+    //TEST VISITOR 8 HOURS EXACTLY
+    @Test
+    public void testCase45()
+    {
+    	BigDecimal reducedRate = new BigDecimal("1");
+        BigDecimal normalRate = new BigDecimal("4");
+
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+        Period rp = new Period(2,6);
+        reducedPeriods.add(rp);
+        Period rp2 = new Period(14,16);
+        reducedPeriods.add(rp2);
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        Period np = new Period(7,12);
+        normalPeriods.add(np);
+        Period np2 = new Period(17,19);
+        normalPeriods.add(np2);
+
+        CarParkKind park = CarParkKind.VISITOR;
+
+        Rate rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
+        Period hours = new Period(7,15);
+        BigDecimal result = rate.calculate(hours);
+
+        BigDecimal expected = new BigDecimal("0");
+        
+        assertEquals(result,expected);
+    }
+    
+    //TEST VISITOR LESS THAN 8 HOURS
+    @Test
+    public void testCase46()
+    {
+    	BigDecimal reducedRate = new BigDecimal("1");
+        BigDecimal normalRate = new BigDecimal("4");
+
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+        Period rp = new Period(2,6);
+        reducedPeriods.add(rp);
+        Period rp2 = new Period(14,16);
+        reducedPeriods.add(rp2);
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        Period np = new Period(7,12);
+        normalPeriods.add(np);
+        Period np2 = new Period(17,19);
+        normalPeriods.add(np2);
+
+        CarParkKind park = CarParkKind.VISITOR;
+
+        Rate rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
+        Period hours = new Period(7,13);
+        BigDecimal result = rate.calculate(hours);
+
+        BigDecimal expected = new BigDecimal("0");
+        
+        assertEquals(result,expected);
+    }
+    
+    //TEST MANAGEMENT COST LESS THAN 3 - FREE PERIOD
+    @Test
+    public void testCase47()
+    {
+    	BigDecimal reducedRate = new BigDecimal("1");
+        BigDecimal normalRate = new BigDecimal("4");
+
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+        Period rp = new Period(4,6);
+        reducedPeriods.add(rp);
+        Period rp2 = new Period(14,16);
+        reducedPeriods.add(rp2);
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        Period np = new Period(7,12);
+        normalPeriods.add(np);
+        Period np2 = new Period(17,19);
+        normalPeriods.add(np2);
+
+        CarParkKind park = CarParkKind.MANAGEMENT;
+
+        Rate rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
+        Period hours = new Period(1,3);
+        BigDecimal result = rate.calculate(hours);
+
+        BigDecimal expected = new BigDecimal("3");
+        
+        assertEquals(result,expected);
+    }
+
+    //TEST MANAGEMENT COST GREATER THAN 3
+    @Test
+    public void testCase48()
+    {
+    	BigDecimal reducedRate = new BigDecimal("1");
+        BigDecimal normalRate = new BigDecimal("4");
+
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+        Period rp = new Period(2,6);
+        reducedPeriods.add(rp);
+        Period rp2 = new Period(14,16);
+        reducedPeriods.add(rp2);
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        Period np = new Period(7,12);
+        normalPeriods.add(np);
+        Period np2 = new Period(17,19);
+        normalPeriods.add(np2);
+
+        CarParkKind park = CarParkKind.MANAGEMENT;
+
+        Rate rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
+        Period hours = new Period(7,19);
+        BigDecimal result = rate.calculate(hours);
+
+        BigDecimal expected = new BigDecimal("30");
+        
+        assertEquals(result,expected);
+    }
+
+    //TEST MANAGEMENT COST LESS THAN 3
+    @Test
+    public void testCase49()
+    {
+    	BigDecimal reducedRate = new BigDecimal("1");
+        BigDecimal normalRate = new BigDecimal("4");
+
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+        Period rp = new Period(2,6);
+        reducedPeriods.add(rp);
+        Period rp2 = new Period(14,16);
+        reducedPeriods.add(rp2);
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        Period np = new Period(7,12);
+        normalPeriods.add(np);
+        Period np2 = new Period(17,19);
+        normalPeriods.add(np2);
+
+        CarParkKind park = CarParkKind.MANAGEMENT;
+
+        Rate rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
+        Period hours = new Period(3,5);
+        BigDecimal result = rate.calculate(hours);
+
+        BigDecimal expected = new BigDecimal("3");
+        
+        assertEquals(result,expected);
+    }
+
+    //TEST STUDENT COST LESS THAN 5.50
+    @Test
+    public void testCase50()
+    {
+    	BigDecimal reducedRate = new BigDecimal("1");
+        BigDecimal normalRate = new BigDecimal("4");
+
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+        Period rp = new Period(2,6);
+        reducedPeriods.add(rp);
+        Period rp2 = new Period(14,16);
+        reducedPeriods.add(rp2);
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        Period np = new Period(7,12);
+        normalPeriods.add(np);
+        Period np2 = new Period(17,19);
+        normalPeriods.add(np2);
+
+        CarParkKind park = CarParkKind.STUDENT;
+
+        Rate rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
+        Period hours = new Period(10,12);
+        BigDecimal result = rate.calculate(hours);
+
+        BigDecimal expected = new BigDecimal("4");
+        
+        assertEquals(result,expected);
+    }
+
+    //TEST STUDENT COST GREATER THAN 5.50
+    @Test
+    public void testCase51()
+    {
+    	BigDecimal reducedRate = new BigDecimal("1");
+        BigDecimal normalRate = new BigDecimal("4");
+
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+        Period rp = new Period(2,6);
+        reducedPeriods.add(rp);
+        Period rp2 = new Period(14,16);
+        reducedPeriods.add(rp2);
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        Period np = new Period(7,12);
+        normalPeriods.add(np);
+        Period np2 = new Period(17,19);
+        normalPeriods.add(np2);
+
+        CarParkKind park = CarParkKind.STUDENT;
+
+        Rate rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
+        Period hours = new Period(7,19);
+        BigDecimal result = rate.calculate(hours);
+
+        BigDecimal expected = new BigDecimal("22.5");
+        
+        assertEquals(result,expected);
+    }
+
+    //TEST STAFF COST GREATER THAN 16
+    @Test
+    public void testCase52()
+    {
+    	BigDecimal reducedRate = new BigDecimal("1");
+        BigDecimal normalRate = new BigDecimal("4");
+
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+        Period rp = new Period(2,6);
+        reducedPeriods.add(rp);
+        Period rp2 = new Period(14,16);
+        reducedPeriods.add(rp2);
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        Period np = new Period(7,12);
+        normalPeriods.add(np);
+        Period np2 = new Period(17,19);
+        normalPeriods.add(np2);
+
+        CarParkKind park = CarParkKind.STAFF;
+
+        Rate rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
+        Period hours = new Period(7,19);
+        BigDecimal result = rate.calculate(hours);
+
+        BigDecimal expected = new BigDecimal("16");
+        
+        assertEquals(result,expected);
+    }
+
+    //TEST STAFF COST LESS THAN 16
+    @Test
+    public void testCase53()
+    {
+    	BigDecimal reducedRate = new BigDecimal("1");
+        BigDecimal normalRate = new BigDecimal("4");
+
+        ArrayList<Period> reducedPeriods = new ArrayList<Period>();
+        Period rp = new Period(2,6);
+        reducedPeriods.add(rp);
+        Period rp2 = new Period(14,16);
+        reducedPeriods.add(rp2);
+
+        ArrayList<Period> normalPeriods = new ArrayList<Period>();
+        Period np = new Period(7,12);
+        normalPeriods.add(np);
+        Period np2 = new Period(17,19);
+        normalPeriods.add(np2);
+
+        CarParkKind park = CarParkKind.STAFF;
+
+        Rate rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
+        Period hours = new Period(13,19);
+        BigDecimal result = rate.calculate(hours);
+
+        BigDecimal expected = new BigDecimal("10");
+        
+        assertEquals(result,expected);
+    }
     
 }
