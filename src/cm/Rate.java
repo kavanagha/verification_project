@@ -113,6 +113,10 @@ public class Rate {
         	new_result = result.multiply(new BigDecimal("0.75"));
         	return new_result;
         }
+        else if(this.kind == CarParkKind.VISITOR)
+        {
+        	
+        }
         
         return result;
     }
