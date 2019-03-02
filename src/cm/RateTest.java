@@ -1255,7 +1255,7 @@ public class RateTest
         Period hours = new Period(1,3);
         BigDecimal result = rate.calculate(hours);
 
-        BigDecimal expected = new BigDecimal("3");
+        BigDecimal expected = new BigDecimal("3.0");
         
         assertEquals(result,expected);
     }
@@ -1315,7 +1315,7 @@ public class RateTest
         Period hours = new Period(3,5);
         BigDecimal result = rate.calculate(hours);
 
-        BigDecimal expected = new BigDecimal("3");
+        BigDecimal expected = new BigDecimal("3.0");
         
         assertEquals(result,expected);
     }
@@ -1342,10 +1342,10 @@ public class RateTest
         CarParkKind park = CarParkKind.STUDENT;
 
         Rate rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        Period hours = new Period(10,12);
+        Period hours = new Period(4,6);
         BigDecimal result = rate.calculate(hours);
 
-        BigDecimal expected = new BigDecimal("4");
+        BigDecimal expected = new BigDecimal("2");
         
         assertEquals(result,expected);
     }
@@ -1372,10 +1372,10 @@ public class RateTest
         CarParkKind park = CarParkKind.STUDENT;
 
         Rate rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        Period hours = new Period(7,19);
+        Period hours = new Period(7,15);
         BigDecimal result = rate.calculate(hours);
 
-        BigDecimal expected = new BigDecimal("22.5");
+        BigDecimal expected = new BigDecimal("15.75");
         
         assertEquals(result,expected);
     }
@@ -1405,7 +1405,7 @@ public class RateTest
         Period hours = new Period(7,19);
         BigDecimal result = rate.calculate(hours);
 
-        BigDecimal expected = new BigDecimal("16");
+        BigDecimal expected = new BigDecimal("16.0");
         
         assertEquals(result,expected);
     }
