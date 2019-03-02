@@ -1165,7 +1165,7 @@ public class RateTest
         Period hours = new Period(7,16);
         BigDecimal result = rate.calculate(hours);
 
-        BigDecimal expected = new BigDecimal("7.0");
+        BigDecimal expected = new BigDecimal("7.00");
         
         assertEquals(result,expected);
     }

@@ -115,7 +115,15 @@ public class Rate {
         }
         else if(this.kind == CarParkKind.VISITOR)
         {
+        	if(result.compareTo(new BigDecimal("8.0"))== 1)
+        	{
+        		new_result = result.subtract(new BigDecimal("8.0"));
+        		new_result = new_result.multiply(new BigDecimal("0.5"));
+        	}
+        	else if(result.compareTo(new BigDecimal("8.0"))==-1 || result.compareTo(new BigDecimal("8.0"))==0)
+        		new_result = BigDecimal.ZERO;
         	
+        	return new_result;
         }
         
         return result;
