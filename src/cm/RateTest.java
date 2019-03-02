@@ -1140,7 +1140,7 @@ public class RateTest
 
     /// TASK 3 ////
     
-    //TEST VISITOR MORE THAN 8 HOURS
+    //TEST VISITOR MORE THAN 8
     @Test
     public void testCase44()
     {
@@ -1162,15 +1162,15 @@ public class RateTest
         CarParkKind park = CarParkKind.VISITOR;
 
         Rate rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        Period hours = new Period(7,19);
+        Period hours = new Period(7,16);
         BigDecimal result = rate.calculate(hours);
 
-        BigDecimal expected = new BigDecimal("4.5");
+        BigDecimal expected = new BigDecimal("7.0");
         
         assertEquals(result,expected);
     }
     
-    //TEST VISITOR 8 HOURS EXACTLY
+    //TEST VISITOR 8 EXACTLY
     @Test
     public void testCase45()
     {
@@ -1192,7 +1192,7 @@ public class RateTest
         CarParkKind park = CarParkKind.VISITOR;
 
         Rate rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        Period hours = new Period(7,15);
+        Period hours = new Period(7,9);
         BigDecimal result = rate.calculate(hours);
 
         BigDecimal expected = new BigDecimal("0");
@@ -1200,7 +1200,7 @@ public class RateTest
         assertEquals(result,expected);
     }
     
-    //TEST VISITOR LESS THAN 8 HOURS
+    //TEST VISITOR LESS THAN 8
     @Test
     public void testCase46()
     {
@@ -1222,7 +1222,7 @@ public class RateTest
         CarParkKind park = CarParkKind.VISITOR;
 
         Rate rate = new Rate(park, normalRate, reducedRate, reducedPeriods, normalPeriods);
-        Period hours = new Period(7,13);
+        Period hours = new Period(2,7);
         BigDecimal result = rate.calculate(hours);
 
         BigDecimal expected = new BigDecimal("0");
